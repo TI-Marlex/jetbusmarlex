@@ -22,17 +22,10 @@
       --card-max: 560px;
       --sp-1: 8px; --sp-2: 12px; --sp-3: 16px; --sp-4: 20px; --sp-5: 24px;
     }
-
     *{box-sizing:border-box}
-
-    html,body{
-      height:100%;
-      min-height:100%;
-    }
-
+    html,body{height:100%;min-height:100%}
     body{
-      margin:0;
-      min-height:100vh;
+      margin:0; min-height:100vh;
       font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
       color:var(--ink);
       background:
@@ -42,109 +35,58 @@
       background-attachment: fixed, fixed, fixed;
       display:grid; place-items:center;
       padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
-      position: relative;
-      overflow-x:hidden;
+      position: relative; overflow-x:hidden;
     }
-
     /* Aurora ampla para não cortar ao rolar */
     body::before{
-      content:"";
-      position:fixed;
-      inset:-60vmax;
+      content:""; position:fixed; inset:-60vmax;
       background:
         radial-gradient(600px 300px at 18% 25%, rgba(58,160,255,.28) 0%, transparent 60%),
         radial-gradient(700px 350px at 83% 12%, rgba(124,59,255,.22) 0%, transparent 65%),
         radial-gradient(620px 320px at 28% 90%, rgba(34,197,94,.18) 0%, transparent 60%);
-      filter: blur(34px) saturate(130%);
-      transform: translate3d(0,0,0);
-      animation: auroraFloat 18s ease-in-out infinite alternate;
-      pointer-events:none;
-      z-index:0;
+      filter: blur(34px) saturate(130%); transform: translate3d(0,0,0);
+      animation: auroraFloat 18s ease-in-out infinite alternate; pointer-events:none; z-index:0;
     }
-    @keyframes auroraFloat{
-      0%  { transform: translate3d(0, 0, 0) }
-      100%{ transform: translate3d(0, -28px, 0) }
-    }
-    @media (prefers-reduced-motion: reduce){
-      body::before{ animation: none }
-    }
+    @keyframes auroraFloat{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(0,-28px,0)}}
+    @media (prefers-reduced-motion: reduce){ body::before{animation:none} }
 
     .card{
       width:min(100%, var(--card-max));
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)) , var(--glass);
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: clip;
-      z-index:1;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)), var(--glass);
+      backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      overflow: clip; z-index:1;
     }
-
     header{
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap: var(--sp-2);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap: var(--sp-2);
       padding: var(--sp-5) var(--sp-4) var(--sp-3) var(--sp-4);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    /* LOGO MAIOR */
     .logo{height:72px; width:auto; border-radius:12px}
-    @media (min-width:900px){ .logo{ height:96px } }
+    @media (min-width:900px){ .logo{height:96px} }
+    .brand{margin:0; text-align:center; font-weight:900; letter-spacing:.2px; font-size: clamp(26px, 8vw, 34px); line-height:1.05}
 
-    .brand{
-      margin:0;
-      text-align:center;
-      font-weight:900;
-      letter-spacing:.2px;
-      font-size: clamp(26px, 8vw, 34px);
-      line-height:1.05;
-      color: var(--ink);
-    }
-
-    .hero{
-      padding: var(--sp-3) var(--sp-4) var(--sp-2) var(--sp-4);
-      display:grid; gap: var(--sp-2);
-    }
-    .kicker{
-      margin:0;
-      font-size: clamp(12px, 3.2vw, 13px);
-      text-transform:uppercase; letter-spacing:.24em; color:#d7e6ffcc; opacity:.92;
-    }
-    h2{
-      margin:0;
-      font-size: clamp(18px, 5.5vw, 22px);
-      line-height:1.2; font-weight:800;
-    }
+    .hero{padding: var(--sp-3) var(--sp-4) var(--sp-2) var(--sp-4); display:grid; gap: var(--sp-2)}
+    .kicker{margin:0; font-size: clamp(12px, 3.2vw, 13px); text-transform:uppercase; letter-spacing:.24em; color:#d7e6ffcc; opacity:.92}
+    h2{margin:0; font-size: clamp(18px, 5.5vw, 22px); line-height:1.2; font-weight:800}
     .hero p{color:var(--muted); margin:0; font-size:14px}
 
-    .gate{
-      padding: var(--sp-2) var(--sp-4) var(--sp-4) var(--sp-4);
-      display:grid; gap: var(--sp-3);
-    }
+    .gate{padding: var(--sp-2) var(--sp-4) var(--sp-4) var(--sp-4); display:grid; gap: var(--sp-3)}
     .qa{
       padding: var(--sp-4);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12); border-radius:16px;
       background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      display:grid; 
-      gap: var(--sp-4);
+      display:grid; gap: var(--sp-4);
     }
     .ask{font-weight:700; margin:0; letter-spacing:.3px}
-
-    .form{
-      display:grid; 
-      gap: var(--sp-3); 
-      margin-top: var(--sp-4);
-    }
-    label{font-weight:600; font-size:14px; display:block;}
+    .form{display:grid; gap: var(--sp-3); margin-top: var(--sp-4)}
+    label{font-weight:600; font-size:14px; display:block}
     .row{display:grid; gap: var(--sp-2); grid-template-columns: 1fr}
-
     input[type="text"]{
-      width:100%; padding:14px 14px;
-      margin-top: var(--sp-2); /* espaço extra entre o label e a caixa de texto */
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:14px; background:var(--glass-strong); color:var(--ink);
+      width:100%; padding:14px 14px; margin-top: var(--sp-2);
+      border:1px solid rgba(255,255,255,.16); border-radius:14px; background:var(--glass-strong); color:var(--ink);
       font-size:20px; letter-spacing:.14em; text-transform:uppercase;
       outline:none; transition:border .15s, box-shadow .15s, background .15s, transform .05s ease;
       -webkit-appearance:none; appearance:none;
@@ -152,51 +94,26 @@
     input[type="text"]:focus{ border-color:var(--primary); box-shadow:0 0 0 8px var(--ring) }
     input[type="text"].is-correct{ border-color: var(--ok); box-shadow: 0 0 0 6px rgba(34,197,94,.22) }
 
-    .slots{
-      display:flex; gap:8px;
-      margin-top: var(--sp-2);
-    }
-    .slot{
-      flex:1; height:6px; border-radius:999px;
-      background:rgba(255,255,255,.12);
-      overflow:hidden; position:relative;
-    }
-    .slot::after{
-      content:""; position:absolute; inset:0;
-      transform:scaleX(0); transform-origin:left;
-      background: linear-gradient(90deg, var(--primary), var(--primary-2));
-      transition: transform .18s ease;
-    }
+    .slots{display:flex; gap:8px; margin-top: var(--sp-2)}
+    .slot{flex:1; height:6px; border-radius:999px; background:rgba(255,255,255,.12); overflow:hidden; position:relative}
+    .slot::after{content:""; position:absolute; inset:0; transform:scaleX(0); transform-origin:left; background: linear-gradient(90deg, var(--primary), var(--primary-2)); transition: transform .18s ease}
     .slot.filled::after{ transform:scaleX(1) }
 
-    .status{
-      display:flex; align-items:center; gap:10px;
-      font-size:14px; min-height:22px;
-      padding:10px 12px; border-radius:12px;
-      border:1px solid transparent; background: transparent;
-    }
+    .status{display:flex; align-items:center; gap:10px; font-size:14px; min-height:22px; padding:10px 12px; border-radius:12px; border:1px solid transparent}
     .status.ok{ color:var(--ok); background: var(--ok-bg); border-color: var(--ok-brd) }
     .status.err{ color:var(--err); background: var(--err-bg); border-color: var(--err-brd) }
     .dot{ width:8px; height:8px; border-radius:999px; background:currentColor }
 
     button{
-      border:0; padding:16px 18px; border-radius:14px;
-      font-weight:800; font-size:16px; letter-spacing:.3px;
+      border:0; padding:16px 18px; border-radius:14px; font-weight:800; font-size:16px; letter-spacing:.3px;
       background: linear-gradient(180deg, var(--primary), var(--primary-2));
-      color:white; cursor:not-allowed; opacity:.55;
-      transition: transform .06s ease, opacity .15s ease, filter .15s;
-      box-shadow: 0 10px 22px rgba(58,160,255,.35);
-      touch-action: manipulation; min-height:52px;
+      color:white; cursor:not-allowed; opacity:.55; transition: transform .06s ease, opacity .15s ease, filter .15s;
+      box-shadow: 0 10px 22px rgba(58,160,255,.35); touch-action: manipulation; min-height:52px;
     }
     button.enabled{ cursor:pointer; opacity:1 }
     button.enabled:active{ transform: translateY(1px) scale(.99) }
 
-    footer{
-      padding: var(--sp-3) var(--sp-4) var(--sp-4) var(--sp-4);
-      color:var(--muted); font-size:12px;
-      display:flex; justify-content:center; align-items:center;
-      border-top:1px dashed rgba(255,255,255,.08);
-    }
+    footer{padding: var(--sp-3) var(--sp-4) var(--sp-4) var(--sp-4); color:var(--muted); font-size:12px; display:flex; justify-content:center; align-items:center; border-top:1px dashed rgba(255,255,255,.08)}
     .legal{opacity:.9}
 
     @media (min-width: 900px){
@@ -205,17 +122,18 @@
       .row{ grid-template-columns: 1fr auto }
       button{ padding-inline:22px }
     }
-
-    @media (prefers-reduced-motion: reduce){
-      *{ transition:none !important; animation:none !important }
-    }
+    @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important } }
   </style>
 </head>
 <body>
+  <noscript style="color:#fff;background:#b91c1c;padding:12px;border-radius:10px;margin:10px;display:block">
+    Este portal requer JavaScript para confirmar o acesso com o ponto de acesso. Ative o JavaScript e recarregue.
+  </noscript>
+
   <main class="card" role="main" aria-labelledby="brand">
     <header>
       <!-- Usa o arquivo local do logo -->
-      <img class="logo" alt="JetBus Marlex Logo" src="./logo.png">
+      <img class="logo" alt="JetBus Marlex Logo" src="./logo.png" loading="eager" decoding="async">
       <h1 id="brand" class="brand">JetBus Marlex</h1>
     </header>
 
@@ -233,7 +151,7 @@
           <div>
             <label for="answer">Digite a resposta:</label>
             <div class="row">
-              <!-- MÁSCARA CORRIGIDA: E___M_____ -->
+              <!-- MÁSCARA: E___M_____ -->
               <input id="answer" name="answer" type="text" inputmode="latin" placeholder="E___M_____" autofocus required />
               <button id="go" type="submit" disabled aria-disabled="true">Entrar no Wi-Fi</button>
             </div>
@@ -261,8 +179,7 @@
     const button = document.getElementById('go');
     const status = document.getElementById('status');
     const slots  = document.getElementById('slots');
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     function buildSlots(n){
       const frag = document.createDocumentFragment();
@@ -285,6 +202,7 @@
         .replace(/[^A-Z]/g,'');
     }
 
+    // URL de sucesso (original/target) que o AP pode enviar
     function getSuccessUrl(){
       const u = new URL(window.location.href);
       const keys = ['continue','redir','success','u','target','url','next'];
@@ -295,11 +213,45 @@
       return FALLBACK_REDIRECT;
     }
 
+    // *** NOVO: localizar o POST URL que o AP envia (nomes comuns variam por modo) ***
+    function findLoginUrl(){
+      const u = new URL(location.href);
+      const keys = [
+        'login_url',       // comum
+        'wispr_login',     // WISPr style
+        'wisprurl',
+        'ap_post',         // alguns ambientes
+        'post_url',
+        'login'            // fallback
+      ];
+      for(const k of keys){
+        const v = u.searchParams.get(k);
+        if(v) return v;
+      }
+      return null;
+    }
+
+    // *** NOVO: confirmar com o AP (Clickthrough) ***
+    async function confirmWithAP(loginUrl){
+      if(!loginUrl) throw new Error('Login URL ausente na querystring.');
+      // Campos opcionais: se o seu ambiente exigir, adicione aqui (ex.: accept, terms, token, etc.)
+      const formData = new FormData();
+      formData.set('accept', 'yes');
+
+      try{
+        // no-cors evita bloqueio do fetch em endpoints do AP que não expõem CORS.
+        await fetch(loginUrl, { method: 'POST', body: formData, mode: 'no-cors', redirect: 'follow' });
+        return true;
+      }catch(e){
+        console.error('[Portal] Falha ao confirmar com AP:', e);
+        return false;
+      }
+    }
+
     function setStatus(ok, msg){
       status.className = 'status ' + (ok ? 'ok' : 'err');
       status.innerHTML = `<span class="dot"></span>${msg}`;
     }
-
     function lockButton(lock=true){
       if(lock){
         button.setAttribute('disabled','');
@@ -311,7 +263,6 @@
         button.classList.add('enabled');
       }
     }
-
     function fillSlots(count){
       const children = slots.children;
       for(let i=0;i<children.length;i++){
@@ -343,7 +294,7 @@
       }
     });
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const val = norm(input.value);
       if(val.length < REQUIRED_LEN) return;
@@ -353,6 +304,19 @@
         setStatus(false, 'Resposta incorreta. Tente novamente.');
         return;
       }
+
+      lockButton(true);
+      setStatus(true, 'Validando acesso…');
+
+      const loginUrl = findLoginUrl();
+      const ok = await confirmWithAP(loginUrl);
+      if(!ok){
+        setStatus(false, 'Não foi possível confirmar com o ponto de acesso. Verifique a configuração do portal externo no Cambium (URL de POST).');
+        lockButton(false);
+        return;
+      }
+
+      // Sucesso: libera e redireciona
       document.cookie = "quiz_ok=1; max-age=86400; path=/; SameSite=Lax";
       window.location.replace(getSuccessUrl());
     });
